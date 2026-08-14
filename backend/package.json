@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "build": "tsc -p tsconfig.json",
-    "start": "node dist/server.js",
+    "start": "tsx src/server.ts",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "lint": "eslint src --ext .ts"
@@ -20,6 +20,7 @@
     "@whiteboard/editor-core": "workspace:*",
     "@whiteboard/shared-types": "workspace:*",
     "@whiteboard/validation": "workspace:*",
+    "tsx": "^4.19.0",
     "bcryptjs": "^2.4.3",
     "database": "workspace:*",
     "dotenv": "^16.4.5",
@@ -35,7 +36,6 @@
     "@types/node": "^22.5.0",
     "@types/ws": "^8.5.12",
     "pino-pretty": "^11.2.2",
-    "tsx": "^4.19.0",
     "typescript": "^5.5.4",
     "vitest": "^2.0.5"
   }
