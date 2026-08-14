@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 12%;
+
+    --primary: 255 70% 62%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 240 5% 96%;
+    --secondary-foreground: 240 10% 12%;
+
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 4% 46%;
+
+    --accent: 255 90% 96%;
+    --accent-foreground: 255 70% 40%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 240 6% 90%;
+    --input: 240 6% 90%;
+    --ring: 255 70% 62%;
+
+    --radius: 0.75rem;
+
+    --canvas-bg: 0 0% 100%;
+    --canvas-grid: 240 6% 92%;
+  }
+
+  .dark {
+    --background: 240 10% 8%;
+    --foreground: 240 5% 92%;
+
+    --card: 240 9% 11%;
+    --card-foreground: 240 5% 92%;
+
+    --popover: 240 9% 11%;
+    --popover-foreground: 240 5% 92%;
+
+    --primary: 255 75% 68%;
+    --primary-foreground: 240 10% 8%;
+
+    --secondary: 240 7% 16%;
+    --secondary-foreground: 240 5% 92%;
+
+    --muted: 240 7% 16%;
+    --muted-foreground: 240 4% 60%;
+
+    --accent: 255 30% 20%;
+    --accent-foreground: 255 80% 82%;
+
+    --destructive: 0 63% 48%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 240 7% 18%;
+    --input: 240 7% 18%;
+    --ring: 255 75% 68%;
+
+    --canvas-bg: 240 10% 10%;
+    --canvas-grid: 240 7% 18%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased font-sans;
+  }
+}
+
+/* Respect reduced-motion preferences across the app */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

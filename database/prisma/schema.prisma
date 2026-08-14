@@ -1,0 +1,89 @@
+// Prisma schema for the Whiteboard application.
+// Run `pnpm db:generate` after changes, and `pnpm db:migrate` to create a migration.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum BoardRole {
+  OWNER
+  EDITOR
+  VIEWER
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  name         String
+  // Nullable: users who sign up via Google OAuth have no local password.
+  passwordHash String?
+  googleId     String?  @unique
+  avatarUrl    String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  ownedBoards Board[]       @relation("BoardOwner")
+  memberships BoardMember[]
+
+  @@map("users")
+}
+
+model Board {
+  id        String   @id @default(cuid())
+  name      String   @default("Untitled board")
+  ownerId   String
+  owner     User     @relation("BoardOwner", fields: [ownerId], references: [id], onDelete: Cascade)
+
+  // The current live document, stored as JSONB. Individual pointer/cursor
+  // movements are never written here -- only debounced, meaningful saves.
+  document  Json     @default("{\"elements\":[],\"backgroundColor\":\"#ffffff\",\"version\":0}")
+  version   Int      @default(0)
+
+  isPublic       Boolean   @default(false)
+  publicRole     BoardRole @default(VIEWER)
+  thumbnailUrl   String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  members   BoardMember[]
+  revisions BoardRevision[]
+
+  @@index([ownerId])
+  @@map("boards")
+}
+
+model BoardMember {
+  id        String    @id @default(cuid())
+  boardId   String
+  userId    String
+  role      BoardRole @default(EDITOR)
+  createdAt DateTime  @default(now())
+
+  board Board @relation(fields: [boardId], references: [id], onDelete: Cascade)
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([boardId, userId])
+  @@index([userId])
+  @@map("board_members")
+}
+
+// Periodic snapshots of a board's document, used for history / recovery.
+// Not written on every change -- only on meaningful save checkpoints.
+model BoardRevision {
+  id        String   @id @default(cuid())
+  boardId   String
+  version   Int
+  document  Json
+  createdAt DateTime @default(now())
+
+  board Board @relation(fields: [boardId], references: [id], onDelete: Cascade)
+
+  @@index([boardId, version])
+  @@map("board_revisions")
+}
