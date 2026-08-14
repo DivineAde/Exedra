@@ -54,4 +54,4 @@ Postgres instance in CI (see `.github/workflows/ci.yml`).
   (`resolveBoardRole` / `requireBoardRole`) — `boardId`/`userId`/`role` are
   never trusted from the request body.
 - Rate limiting via `@fastify/rate-limit` (200 req/min per client, tune for
-  production).
+  production)...
