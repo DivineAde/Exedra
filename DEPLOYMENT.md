@@ -223,6 +223,7 @@ Frontend and backend live on different domains in this setup, so:
 
 Before calling it done, manually verify:
 
+
 - [ ] Register a new user → session persists across a page reload
 - [ ] Create a board, draw something, refresh → it's still there
 - [ ] Open the same board in two browsers/tabs as different users →
