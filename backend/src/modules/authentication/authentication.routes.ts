@@ -11,7 +11,7 @@ const COOKIE_NAME = "whiteboard_token";
 function setSessionCookie(reply: import("fastify").FastifyReply, token: string) {
   reply.setCookie(COOKIE_NAME, token, {
     httpOnly: true,
-    sameSite: "lax",
+    sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
     secure: process.env.NODE_ENV === "production",
     path: "/",
     maxAge: 60 * 60 * 24 * 7,
