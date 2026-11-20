@@ -47,14 +47,14 @@ export function LoginForm() {
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
       <div className="flex flex-col gap-1.5">
         <Label htmlFor="email">Email</Label>
-        <Input id="email" type="email" placeholder="you@example.com" {...register("email")} />
+        <Input id="email" type="email" autoComplete="email" placeholder="you@example.com" {...register("email")} />
         {errors.email && <p className="text-xs text-destructive">{errors.email.message}</p>}
       </div>
 
       <div className="flex flex-col gap-1.5">
         <Label htmlFor="password">Password</Label>
         <div className="relative">
-          <Input id="password" type={showPassword ? "text" : "password"} placeholder="••••••••" {...register("password")} />
+          <Input id="password" type={showPassword ? "text" : "password"} autoComplete="current-password" placeholder="••••••••" {...register("password")} />
           <button
             type="button"
             onClick={() => setShowPassword((s) => !s)}

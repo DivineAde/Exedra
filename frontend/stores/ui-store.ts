@@ -16,6 +16,8 @@ interface UiStore {
   setExportDialogOpen: (open: boolean) => void;
   isShortcutsDialogOpen: boolean;
   setShortcutsDialogOpen: (open: boolean) => void;
+  mobileNavOpen: boolean;
+  setMobileNavOpen: (open: boolean) => void;
 }
 
 export const useUiStore = create<UiStore>((set) => ({
@@ -29,4 +31,6 @@ export const useUiStore = create<UiStore>((set) => ({
   setExportDialogOpen: (open) => set({ isExportDialogOpen: open }),
   isShortcutsDialogOpen: false,
   setShortcutsDialogOpen: (open) => set({ isShortcutsDialogOpen: open }),
+  mobileNavOpen: false,
+  setMobileNavOpen: (open) => set({ mobileNavOpen: open }),
 }));

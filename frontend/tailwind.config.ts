@@ -44,6 +44,7 @@ const config: Config = {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
         },
+        sidebar: "hsl(var(--sidebar))",
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
@@ -57,9 +58,21 @@ const config: Config = {
       fontFamily: {
         sans: ["var(--font-sans)", "sans-serif"],
         hand: ["var(--font-hand)", "cursive"],
+        display: ["var(--font-display)", "var(--font-sans)", "sans-serif"],
       },
       keyframes: {
         "fade-in": { from: { opacity: "0" }, to: { opacity: "1" } },
+        shimmer: { "100%": { transform: "translateX(100%)" } },
+        "cursor-a": {
+          "0%, 100%": { transform: "translate(0,0)" },
+          "35%": { transform: "translate(46px,-22px)" },
+          "70%": { transform: "translate(-18px,26px)" },
+        },
+        "cursor-b": {
+          "0%, 100%": { transform: "translate(0,0)" },
+          "40%": { transform: "translate(-52px,18px)" },
+          "75%": { transform: "translate(22px,-30px)" },
+        },
         "slide-up": {
           from: { opacity: "0", transform: "translateY(4px)" },
           to: { opacity: "1", transform: "translateY(0)" },
@@ -68,6 +81,9 @@ const config: Config = {
       animation: {
         "fade-in": "fade-in 150ms ease-out",
         "slide-up": "slide-up 150ms ease-out",
+        shimmer: "shimmer 1.6s ease-in-out infinite",
+        "cursor-a": "cursor-a 9s ease-in-out infinite",
+        "cursor-b": "cursor-b 11s ease-in-out infinite",
       },
     },
   },

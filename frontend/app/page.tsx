@@ -4,7 +4,8 @@ import Link from "next/link";
 import { useAuth } from "@/providers/auth-provider";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
-import { PenTool, Users, Zap, Github, Heart } from "lucide-react";
+import { Logo } from "@/components/brand/Logo";
+import { Github, Heart } from "lucide-react";
 
 export default function HomePage() {
   const { user, isLoading } = useAuth();
@@ -12,10 +13,7 @@ export default function HomePage() {
   return (
     <div className="flex min-h-screen flex-col">
       <header className="container absolute top-0 left-0 right-0 z-20 flex h-20 items-center justify-between">
-        <div className="flex items-center gap-2 font-semibold">
-          <PenTool className="h-5 w-5 text-primary" />
-          Exedra
-        </div>
+        <Logo />
         <div className="flex items-center gap-3">
           <ThemeToggle />
           {!isLoading && user ? (
@@ -83,7 +81,7 @@ export default function HomePage() {
               Design in the browser,<br />openly.
             </h1>
             <p className="mb-5 max-w-xl text-lg leading-[1.6] text-muted-foreground sm:mb-12 sm:text-xl sm:leading-[1.55] lg:text-[1.375rem] lg:leading-[1.5]">
-              Exedra is an open canvas for layouts, and .
+              Exedra is an open canvas for diagrams, sketches and ideas. Draw together and watch your team&apos;s cursors move live.
             </p>
             
             <div className="flex flex-wrap items-center justify-center sm:justify-start gap-4">

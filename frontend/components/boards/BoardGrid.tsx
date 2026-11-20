@@ -1,20 +1,31 @@
 "use client";
 
-import { BoardCard } from "./BoardCard";
+import { BoardCard, type BoardCardProps } from "./BoardCard";
+import { NewBoardTile } from "./CreateBoardButton";
 import type { BoardSummaryDTO } from "@whiteboard/shared-types";
 
-interface BoardGridProps {
+interface BoardGridProps extends Omit<BoardCardProps, "board" | "view"> {
   boards: BoardSummaryDTO[];
-  onDelete: (id: string) => void;
-  onDuplicate: (id: string) => void;
-  onRename: (id: string) => void;
+  view?: "grid" | "list";
+  /** Show the blank-board tile as the first grid item. */
+  showNewTile?: boolean;
 }
 
-export function BoardGrid({ boards, onDelete, onDuplicate, onRename }: BoardGridProps) {
+export function BoardGrid({ boards, view = "grid", showNewTile = false, ...handlers }: BoardGridProps) {
+  if (view === "list") {
+    return (
+      <div className="divide-y overflow-hidden rounded-2xl border bg-card">
+        {boards.map((board) => (
+          <BoardCard key={board.id} board={board} view="list" {...handlers} />
+        ))}
+      </div>
+    );
+  }
   return (
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+    <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+      {showNewTile && <NewBoardTile />}
       {boards.map((board) => (
-        <BoardCard key={board.id} board={board} onDelete={onDelete} onDuplicate={onDuplicate} onRename={onRename} />
+        <BoardCard key={board.id} board={board} {...handlers} />
       ))}
     </div>
   );

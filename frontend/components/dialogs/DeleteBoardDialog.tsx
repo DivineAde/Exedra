@@ -16,7 +16,7 @@ export function DeleteBoardDialog({ open, onOpenChange, boardName, onConfirm, is
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Delete &ldquo;{boardName}&rdquo;?</DialogTitle>
+          <DialogTitle className="font-display">Delete &ldquo;{boardName}&rdquo;?</DialogTitle>
           <DialogDescription>
             This board and all of its content will be permanently deleted. This action cannot be undone.
           </DialogDescription>

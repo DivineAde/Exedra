@@ -1,5 +1,6 @@
 "use client";
 
+import { LogoMark } from "@/components/brand/Logo";
 import { useState } from "react";
 import Link from "next/link";
 import { useTheme } from "next-themes";
@@ -35,7 +36,7 @@ export function GuestEditorHeader({ name, onNameChange }: GuestEditorHeaderProps
   return (
     <header className="flex h-14 items-center justify-between gap-2 border-b bg-card px-3 sm:gap-4 sm:px-4">
       <div className="flex min-w-0 items-center gap-2 sm:gap-3">
-        <PenTool className="h-4 w-4 shrink-0 text-primary" />
+        <LogoMark className="hidden h-7 w-7 rounded-lg sm:inline-flex" />
         {editing ? (
           <Input
             autoFocus

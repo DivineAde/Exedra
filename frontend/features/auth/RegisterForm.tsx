@@ -43,20 +43,20 @@ export function RegisterForm() {
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
       <div className="flex flex-col gap-1.5">
         <Label htmlFor="name">Name</Label>
-        <Input id="name" placeholder="Ada Lovelace" {...register("name")} />
+        <Input id="name" autoComplete="name" placeholder="Ada Lovelace" {...register("name")} />
         {errors.name && <p className="text-xs text-destructive">{errors.name.message}</p>}
       </div>
 
       <div className="flex flex-col gap-1.5">
         <Label htmlFor="email">Email</Label>
-        <Input id="email" type="email" placeholder="you@example.com" {...register("email")} />
+        <Input id="email" type="email" autoComplete="email" placeholder="you@example.com" {...register("email")} />
         {errors.email && <p className="text-xs text-destructive">{errors.email.message}</p>}
       </div>
 
       <div className="flex flex-col gap-1.5">
         <Label htmlFor="password">Password</Label>
         <div className="relative">
-          <Input id="password" type={showPassword ? "text" : "password"} placeholder="At least 8 characters" {...register("password")} />
+          <Input id="password" type={showPassword ? "text" : "password"} autoComplete="new-password" placeholder="At least 8 characters" {...register("password")} />
           <button
             type="button"
             onClick={() => setShowPassword((s) => !s)}

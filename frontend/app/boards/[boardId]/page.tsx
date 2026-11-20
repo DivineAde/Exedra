@@ -11,7 +11,7 @@ import { PropertiesPanel } from "@/components/editor/PropertiesPanel";
 import { ShareBoardDialog } from "@/components/dialogs/ShareBoardDialog";
 import { ExportDialog } from "@/components/dialogs/ExportDialog";
 import { KeyboardShortcutsDialog } from "@/components/dialogs/KeyboardShortcutsDialog";
-import { FullPageLoading } from "@/components/feedback/LoadingState";
+import { EditorSkeleton } from "@/components/feedback/LoadingState";
 import { ErrorState } from "@/components/feedback/ErrorState";
 import { useBoard } from "@/features/boards/use-board";
 import { useEditorStore } from "@/stores/editor-store";
@@ -57,7 +57,7 @@ export default function BoardPage() {
     socketRef.current?.send({ type: "cursor:update", boardId, x: worldX, y: worldY });
   }
 
-  if (isLoading) return <FullPageLoading />;
+  if (isLoading) return <EditorSkeleton />;
 
   if (isError || !board) {
     return (

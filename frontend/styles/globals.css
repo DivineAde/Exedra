@@ -13,7 +13,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 12%;
 
-    --primary: 255 70% 62%;
+    --primary: 240 10% 10%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 240 5% 96%;
@@ -22,18 +22,19 @@
     --muted: 240 5% 96%;
     --muted-foreground: 240 4% 46%;
 
-    --accent: 255 90% 96%;
-    --accent-foreground: 255 70% 40%;
+    --accent: 240 5% 94%;
+    --accent-foreground: 240 10% 12%;
 
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
     --border: 240 6% 90%;
     --input: 240 6% 90%;
-    --ring: 255 70% 62%;
+    --ring: 240 6% 30%;
 
     --radius: 0.75rem;
 
+    --sidebar: 240 14% 97%;
     --canvas-bg: 0 0% 100%;
     --canvas-grid: 240 6% 92%;
   }
@@ -48,7 +49,7 @@
     --popover: 240 9% 11%;
     --popover-foreground: 240 5% 92%;
 
-    --primary: 255 75% 68%;
+    --primary: 0 0% 98%;
     --primary-foreground: 240 10% 8%;
 
     --secondary: 240 7% 16%;
@@ -57,16 +58,17 @@
     --muted: 240 7% 16%;
     --muted-foreground: 240 4% 60%;
 
-    --accent: 255 30% 20%;
-    --accent-foreground: 255 80% 82%;
+    --accent: 240 7% 18%;
+    --accent-foreground: 0 0% 98%;
 
     --destructive: 0 63% 48%;
     --destructive-foreground: 0 0% 100%;
 
     --border: 240 7% 18%;
     --input: 240 7% 18%;
-    --ring: 255 75% 68%;
+    --ring: 0 0% 78%;
 
+    --sidebar: 240 10% 9.5%;
     --canvas-bg: 240 10% 10%;
     --canvas-grid: 240 7% 18%;
   }
@@ -78,6 +80,17 @@
   }
   body {
     @apply bg-background text-foreground antialiased font-sans;
+  }
+}
+
+@layer utilities {
+  .bg-dots {
+    background-image: radial-gradient(hsl(var(--foreground) / 0.10) 1px, transparent 1px);
+    background-size: 16px 16px;
+  }
+  .font-display {
+    font-family: var(--font-display), var(--font-sans), sans-serif;
+    letter-spacing: -0.02em;
   }
 }
 

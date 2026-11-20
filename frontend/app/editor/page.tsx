@@ -8,7 +8,7 @@ import { ZoomControls } from "@/components/editor/ZoomControls";
 import { PropertiesPanel } from "@/components/editor/PropertiesPanel";
 import { ExportDialog } from "@/components/dialogs/ExportDialog";
 import { KeyboardShortcutsDialog } from "@/components/dialogs/KeyboardShortcutsDialog";
-import { FullPageLoading } from "@/components/feedback/LoadingState";
+import { EditorSkeleton } from "@/components/feedback/LoadingState";
 import { useGuestBoard } from "@/hooks/use-guest-board";
 import { useKeyboardShortcuts } from "@/hooks/use-keyboard-shortcuts";
 import { useUiStore } from "@/stores/ui-store";
@@ -36,7 +36,7 @@ export default function GuestEditorPage() {
     return () => window.removeEventListener("keydown", onShortcutKey);
   }, [setShortcutsDialogOpen]);
 
-  if (!ready) return <FullPageLoading />;
+  if (!ready) return <EditorSkeleton />;
 
   return (
     <EditorLayout>

@@ -1,5 +1,6 @@
 "use client";
 
+import { LogoMark } from "@/components/brand/Logo";
 import { useState } from "react";
 import Link from "next/link";
 import { useTheme } from "next-themes";
@@ -38,7 +39,7 @@ export function EditorHeader({ boardId, initialName }: { boardId: string; initia
             <ArrowLeft className="h-4 w-4" />
           </Link>
         </Button>
-        <PenTool className="hidden h-4 w-4 text-primary sm:block" />
+        <LogoMark className="hidden h-7 w-7 rounded-lg sm:inline-flex" />
         {editing ? (
           <Input
             autoFocus

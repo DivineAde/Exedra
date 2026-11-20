@@ -1,24 +1,22 @@
 import Link from "next/link";
 import { RegisterForm } from "@/features/auth/RegisterForm";
-import { PenTool } from "lucide-react";
+import { AuthShell } from "@/components/auth/AuthShell";
 
 export default function RegisterPage() {
   return (
-    <div className="flex min-h-screen items-center justify-center px-4">
-      <div className="w-full max-w-sm">
-        <div className="mb-8 flex flex-col items-center gap-2 text-center">
-          <PenTool className="h-6 w-6 text-primary" />
-          <h1 className="text-2xl font-semibold">Create your account</h1>
-          <p className="text-sm text-muted-foreground">Start sketching in under a minute.</p>
-        </div>
-        <RegisterForm />
-        <p className="mt-6 text-center text-sm text-muted-foreground">
+    <AuthShell
+      title="Create your account"
+      subtitle="Start sketching in under a minute."
+      footer={
+        <>
           Already have an account?{" "}
-          <Link href="/login" className="font-medium text-primary hover:underline">
+          <Link href="/login" className="font-medium text-foreground underline underline-offset-4 hover:no-underline">
             Log in
           </Link>
-        </p>
-      </div>
-    </div>
+        </>
+      }
+    >
+      <RegisterForm />
+    </AuthShell>
   );
 }
